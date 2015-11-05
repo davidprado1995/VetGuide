@@ -19,6 +19,7 @@
     <string name="title_activity_registro_servicios">Paso 3 de 4</string>
     <string name="title_activity_registro_doctor">Paso 4 de 4</string>
     <string name="title_activity_inicio">Inicio</string>
+    <string name="title_activity_principal">PrincipalActivity</string>
 
 
 
