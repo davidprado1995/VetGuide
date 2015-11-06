@@ -73,6 +73,7 @@ public class RegistrarVeterinariaFragment extends Fragment {
             }
         });
 
+
         butCancelar=(Button)view.findViewById(R.id.buttonCancelar3);
         butCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
