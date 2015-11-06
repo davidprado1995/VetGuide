@@ -63,6 +63,7 @@ public class VeterinariaAdapter extends RecyclerView.Adapter<VeterinariaAdapter.
         // - replace the contents of the view with that element
         holder.mTextView.setText(lista.get(position).getNombre());
         holder.direccion.setText(lista.get(position).getDireccion());
+        holder.itemView.setTag(lista.get(position));
         holder.itemView.setOnClickListener(listener);
 
     }

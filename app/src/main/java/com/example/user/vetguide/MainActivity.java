@@ -120,8 +120,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void done(ParseUser user, ParseException e) {
                         if (e==null){
-                            Toast t = Toast.makeText(getBaseContext(),"Login Correcto",Toast.LENGTH_SHORT);
-                            t.show();
+                            /*Toast t = Toast.makeText(getBaseContext(),"Login Correcto",Toast.LENGTH_SHORT);
+                            t.show();*/
 
                             Intent i = new Intent(getBaseContext(),Inicio.class);
                             startActivity(i);

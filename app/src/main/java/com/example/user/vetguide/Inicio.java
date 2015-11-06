@@ -37,14 +37,15 @@ public class Inicio extends AppCompatActivity {
         rvi.setLayoutManager(new LinearLayoutManager(this));
         final List<Veterinaria> lista = new ArrayList<>();
 
-        ParseQuery query = ParseQuery.getQuery("Veterinaria");
-        query.findInBackground(new FindCallback<ParseObject>() {
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Veterinaria");
+        /*query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> objects, ParseException e) {
                 if(e==null){
+                    Toast t=Toast.makeText(getBaseContext(), objects.size() + "" , Toast.LENGTH_SHORT);
+                    t.show();
                     for(int i=0;i<objects.size();i++){
                         ParseObject po = objects.get(i);
-                        System.out.println(po);
                         String nombrevet = po.getString("nombre");
                         String direccionvet = po.getString("direccion");
                         long numero = po.getLong("telefono");
@@ -60,17 +61,46 @@ public class Inicio extends AppCompatActivity {
                     }
                 }
             }
-        });
+        });*/
+        List<ParseObject> results = new ArrayList<>();
+        try {
+            results = query.find();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Toast t=Toast.makeText(getBaseContext(), results.size() + "" , Toast.LENGTH_SHORT);
+        t.show();
+        for(int i=0;i<results.size();i++){
+            ParseObject po = results.get(i);
+            String nombrevet = po.getString("nombre");
+            String direccionvet = po.getString("direccion");
+            long numero = po.getLong("telefono");
+            String diasatencion=po.getString("dias_atencion");
+            String horasatencion=po.getString("horas_atencion");
+            List<String> mascotas=po.getList("TipoMascota");
+            List<String> servicios=po.getList("ServiciosBrindados");
+            double lon=0.0;
+            double lat=0.0;
+            Veterinaria vet=new Veterinaria(nombrevet,direccionvet,numero,horasatencion,diasatencion,mascotas,servicios,lon,lat);
+            lista.add(vet);
+
+        }
 
         VeterinariaAdapter vad=new VeterinariaAdapter(lista);
         vad.SetOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Veterinaria ve= (Veterinaria)v.getTag();
+
 
             }
         });
         rvi.setAdapter(vad);
 
+
+
     }
+
+
 
 }
