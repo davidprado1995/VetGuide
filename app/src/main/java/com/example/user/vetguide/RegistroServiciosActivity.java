@@ -9,15 +9,23 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 import com.parse.GetCallback;
+import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.SaveCallback;
+
+import org.json.simple.JSONArray;
 
 public class RegistroServiciosActivity extends AppCompatActivity {
 
     Button butSiguiente, butCancelar;
-String codigovet, serviciosaBrindar;
+    String codigovet;
+
+    // String serviciosaBrindar
+
     CheckBox cb1,cb2,cb3,cb4,cb5,cb6,cb7,cb8,cb9;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,57 +54,90 @@ String codigovet, serviciosaBrindar;
                 Intent i0 = getIntent();
                 codigovet =  i0.getStringExtra("codigoveterinaria");
 
+
+
                 ParseQuery<ParseObject> query = ParseQuery.getQuery("Veterinaria");
 
                 // Retrieve the object by id
                 query.getInBackground(codigovet, new GetCallback<ParseObject>() {
                     @Override
                     public void done(ParseObject object, com.parse.ParseException e) {
-                        if (e == null){
+                        if (e == null) {
 
-
-
-
-                            if(cb1.isChecked()){
-                                serviciosaBrindar = serviciosaBrindar + cb1.getText().toString() + ",";
+                            JSONArray serviciosbrindados = new JSONArray();
+                            if (cb1.isChecked()) {
+                                // serviciosaBrindar = serviciosaBrindar + cb1.getText().toString() + ",";
+                                //serviciosaBrindar = cb1.getText().toString();
+                                serviciosbrindados.add(cb1.getText().toString());
                             }
 
-                            if(cb2.isChecked()){
-                                serviciosaBrindar = serviciosaBrindar + cb2.getText().toString() + ",";
+                            if (cb2.isChecked()) {
+                                //  serviciosaBrindar = serviciosaBrindar + cb2.getText().toString() + ",";
+                                // serviciosaBrindar = cb2.getText().toString();
+                                serviciosbrindados.add(cb2.getText().toString());
                             }
 
-                            if(cb3.isChecked()){
-                                serviciosaBrindar = serviciosaBrindar + cb3.getText().toString() + ",";
+                            if (cb3.isChecked()) {
+                                //  serviciosaBrindar = serviciosaBrindar + cb3.getText().toString() + ",";
+                                // serviciosaBrindar = cb3.getText().toString();
+                                serviciosbrindados.add(cb3.getText().toString());
                             }
 
-                            if(cb4.isChecked()){
-                                serviciosaBrindar = serviciosaBrindar + cb4.getText().toString() + ",";
+                            if (cb4.isChecked()) {
+                                //serviciosaBrindar = serviciosaBrindar + cb4.getText().toString() + ",";
+                                // serviciosaBrindar = cb4.getText().toString();
+                                serviciosbrindados.add(cb4.getText().toString());
                             }
 
-                            if(cb5.isChecked()){
-                                serviciosaBrindar = serviciosaBrindar + cb5.getText().toString() + ",";
+                            if (cb5.isChecked()) {
+                                // serviciosaBrindar = serviciosaBrindar + cb5.getText().toString() + ",";
+                                // serviciosaBrindar = cb5.getText().toString();
+                                serviciosbrindados.add(cb5.getText().toString());
                             }
 
-                            if(cb6.isChecked()){
-                                serviciosaBrindar = serviciosaBrindar + cb6.getText().toString() + ",";
+                            if (cb6.isChecked()) {
+                                //  serviciosaBrindar = serviciosaBrindar + cb6.getText().toString() + ",";
+                                // serviciosaBrindar = cb6.getText().toString();
+                                serviciosbrindados.add(cb6.getText().toString());
                             }
 
-                            if(cb7.isChecked()){
-                                serviciosaBrindar = serviciosaBrindar + cb7.getText().toString() + ",";
+                            if (cb7.isChecked()) {
+                                // serviciosaBrindar = serviciosaBrindar + cb7.getText().toString() + ",";
+                                // serviciosaBrindar = cb7.getText().toString();
+                                serviciosbrindados.add(cb7.getText().toString());
                             }
 
-                            if(cb8.isChecked()){
-                                serviciosaBrindar = serviciosaBrindar + cb8.getText().toString() + ",";
+                            if (cb8.isChecked()) {
+                                // serviciosaBrindar = serviciosaBrindar + cb8.getText().toString() + ",";
+                                // serviciosaBrindar = cb8.getText().toString();
+                                serviciosbrindados.add(cb8.getText().toString());
                             }
 
-                            if(cb9.isChecked()){
-                                serviciosaBrindar = serviciosaBrindar + cb9.getText().toString() + ",";
+                            if (cb9.isChecked()) {
+                                //  serviciosaBrindar = serviciosaBrindar + cb9.getText().toString() + ",";
+                                // serviciosaBrindar = cb9.getText().toString();
+                                serviciosbrindados.add(cb9.getText().toString());
                             }
 
 
+                            //  object.put("serviciosBrindados",serviciosaBrindar);
 
+                            object.addAllUnique("ServiciosBrindados", serviciosbrindados);
 
-                            object.put("serviciosBrindados",serviciosaBrindar);
+                            object.saveInBackground(new SaveCallback() {
+                                @Override
+                                public void done(ParseException e) {
+                                    if (e == null) {
+                                        Intent i = new Intent(RegistroServiciosActivity.this, RegistroDoctorActivity.class);
+                                        i.putExtra("codVet", codigovet);
+                                        startActivity(i);
+                                    } else {
+                                        Toast t = Toast.makeText(getBaseContext(), "No se puede agregar la lista", Toast.LENGTH_SHORT);
+                                        t.show();
+                                    }
+
+                                }
+                            });
                         }
                     }
 
@@ -104,9 +145,7 @@ String codigovet, serviciosaBrindar;
                 });
 
 
-                Intent i = new Intent(RegistroServiciosActivity.this, RegistroDoctorActivity.class);
-                i.putExtra("codVet",codigovet);
-                startActivity(i);
+
             }
         });
 

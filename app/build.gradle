@@ -20,7 +20,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.0'
     compile 'com.android.support:design:23.1.0'
@@ -29,4 +29,5 @@ dependencies {
     compile files('libs/ParseFacebookUtilsV4-1.10.1.jar')
     compile 'com.facebook.android:facebook-android-sdk:4.7.0'
     compile 'com.android.support:recyclerview-v7:23.1.0'
+    compile files('C:/Users/Anilu/Desktop/Proyecto Soft II (VetGuide) Sprint II/VetGuide/json-simple-1.1.1.jar')
 }
