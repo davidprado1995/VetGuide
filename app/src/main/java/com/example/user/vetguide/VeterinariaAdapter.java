@@ -6,6 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.parse.Parse;
+import com.parse.ParseObject;
+
 import org.w3c.dom.Text;
 
 import java.util.List;
@@ -16,7 +19,7 @@ import clases.Veterinaria;
  * Created by itlab on 11/5/15.
  */
 public class VeterinariaAdapter extends RecyclerView.Adapter<VeterinariaAdapter.ViewHolder> {
-    private List<Veterinaria> lista;
+    private List<ParseObject> lista;
 
 
     View.OnClickListener listener;
@@ -39,7 +42,7 @@ public class VeterinariaAdapter extends RecyclerView.Adapter<VeterinariaAdapter.
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public VeterinariaAdapter(List<Veterinaria> myDataset) {
+    public VeterinariaAdapter(List<ParseObject> myDataset) {
         lista = myDataset;
     }
 
@@ -61,8 +64,10 @@ public class VeterinariaAdapter extends RecyclerView.Adapter<VeterinariaAdapter.
     public void onBindViewHolder(ViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.mTextView.setText(lista.get(position).getNombre());
-        holder.direccion.setText(lista.get(position).getDireccion());
+        //recorriendo la lista de veterinarias (parse object)
+        ParseObject po=lista.get(position);
+        holder.mTextView.setText(po.getString("nombre"));
+        holder.direccion.setText(po.getString("direccion"));
         holder.itemView.setOnClickListener(listener);
 
     }

@@ -11,7 +11,7 @@
     <string name="facebook_app_id">1146785745385769</string>
 
 
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_registro_mascota">Paso 2 de 3</string>
     <string name="title_activity_registrar_datos_mascota">Paso 3 de 3</string>
@@ -20,7 +20,7 @@
     <string name="title_activity_registro_doctor">Paso 4 de 4</string>
     <string name="title_activity_inicio">Inicio</string>
     <string name="title_activity_principal">PrincipalActivity</string>
-
+    <string name="title_activity_maps">Map</string>
 
 
 </resources>

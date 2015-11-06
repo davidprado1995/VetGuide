@@ -18,13 +18,7 @@ public class UseParse extends Application{
         Parse.enableLocalDatastore(this);
         Parse.initialize(this, getResources().getString(R.string.parse_app_id), getResources().getString(R.string.parse_client_key));
         ParseFacebookUtils.initialize(this.getApplicationContext());
-        ParseUser.enableRevocableSessionInBackground();
-        ParseUser.enableAutomaticUser();
 
-        ParseACL defaultACL = new ParseACL();
-        // Optionally enable public read access.
-        // defaultACL.setPublicReadAccess(true);
-        ParseACL.setDefaultACL(defaultACL, true);
 
 
     }
