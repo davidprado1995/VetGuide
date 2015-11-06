@@ -44,7 +44,6 @@ public class Inicio extends AppCompatActivity {
                 if(e==null){
                     for(int i=0;i<objects.size();i++){
                         ParseObject po = objects.get(i);
-                        System.out.println(po);
                         String nombrevet = po.getString("nombre");
                         String direccionvet = po.getString("direccion");
                         long numero = po.getLong("telefono");
@@ -56,7 +55,7 @@ public class Inicio extends AppCompatActivity {
                         double lat=0.0;
                         Veterinaria vet=new Veterinaria(nombrevet,direccionvet,numero,horasatencion,diasatencion,mascotas,servicios,lon,lat);
                         lista.add(vet);
-
+                        System.out.println(vet.toString());
                     }
                 }
             }

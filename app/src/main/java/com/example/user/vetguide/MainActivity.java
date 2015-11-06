@@ -13,6 +13,8 @@ import com.parse.LogInCallback;
 import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseFacebookUtils;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 
@@ -107,15 +109,17 @@ public class MainActivity extends AppCompatActivity {
                 String u = usernameI.getText().toString();
                 String p = passwordI.getText().toString();
 
+
                 ParseUser currentuser = ParseUser.getCurrentUser();
 
                 currentuser.logOut();
 
-
-
                 ParseUser usuarioentrante = new ParseUser();
-                usuarioentrante.setPassword(passwordI.getText().toString());
-                usuarioentrante.setEmail(usernameI.getText().toString());
+               usuarioentrante.setPassword(passwordI.getText().toString());
+               usuarioentrante.setEmail(usernameI.getText().toString());
+
+
+
                 usuarioentrante.logInInBackground(u, p, new LogInCallback() {
                     @Override
                     public void done(ParseUser user, ParseException e) {

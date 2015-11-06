@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.parse.ParseACL;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.SaveCallback;
@@ -42,8 +43,12 @@ public class RegistrarVeterinariaFragment extends Fragment {
         butSiguiente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               veterinaria= new ParseObject("Veterinaria");
+                ParseACL restriccion = new ParseACL();
+            // restriccion.setPublicReadAccess(true);
 
+              veterinaria= new ParseObject("Veterinaria");
+
+           // veterinaria.setACL(restriccion);
 
                 veterinaria.put("nombre",nombrevete.getText().toString());
                 veterinaria.put("direccion",direccionvete.getText().toString());

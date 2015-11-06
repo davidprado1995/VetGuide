@@ -99,4 +99,19 @@ public class Veterinaria {
     public void setLatitud(double latitud) {
         this.latitud = latitud;
     }
+
+    @Override
+    public String toString() {
+        return "Veterinaria{" +
+                "nombre='" + nombre + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", numero=" + numero +
+                ", horasAtencion='" + horasAtencion + '\'' +
+                ", diasAtencion='" + diasAtencion + '\'' +
+                ", mascotasAAtender=" + mascotasAAtender +
+                ", serviciosBrindados=" + serviciosBrindados +
+                ", longitud=" + longitud +
+                ", latitud=" + latitud +
+                '}';
+    }
 }
