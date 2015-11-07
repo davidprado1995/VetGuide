@@ -192,14 +192,14 @@
             android:id="@+id/buttonCancelar3" />
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Siguiente"
-            android:id="@+id/buttonSiguiente3"
-            android:background="@drawable/mybutton"
-            android:layout_marginLeft="50dp"/>
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Siguiente"
+    android:id="@+id/buttonSiguiente3"
+    android:background="@drawable/mybutton"
+    android:layout_marginLeft="50dp"/>
 
 
-    </LinearLayout>
 </LinearLayout>
+    </LinearLayout>
 </ScrollView>
