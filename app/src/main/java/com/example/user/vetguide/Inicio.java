@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -24,6 +25,7 @@ public class Inicio extends AppCompatActivity {
     ParseQuery<ParseObject> query = ParseQuery.getQuery("Veterinaria");
     VeterinariaAdapter adapter;
     List<ParseObject> lista = new ArrayList<>();//lo cambie por un ParseObject
+    String idUsuario;
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
 
@@ -34,6 +36,8 @@ public class Inicio extends AppCompatActivity {
         RecyclerView rvi=(RecyclerView)findViewById(R.id.my_recycler_view);
         rvi.setLayoutManager(new LinearLayoutManager(this));
 
+        Intent intentando=getIntent();
+        idUsuario=intentando.getStringExtra("idUsuario");
 
 
 
@@ -41,13 +45,13 @@ public class Inicio extends AppCompatActivity {
 
 
         adapter=new VeterinariaAdapter(lista);
+
         rvi.setAdapter(adapter);
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> objects, ParseException e) {
 
                 for(ParseObject object:objects){
-                    Toast.makeText(Inicio.this, object.get("nombre").toString(), Toast.LENGTH_SHORT).show();
                     lista.add(object);
                 }
                 adapter.notifyDataSetChanged();
@@ -59,16 +63,19 @@ public class Inicio extends AppCompatActivity {
 
 
 
-        VeterinariaAdapter vad=new VeterinariaAdapter(lista);
-        vad.SetOnClickListener(new View.OnClickListener() {
+        //VeterinariaAdapter vad=new VeterinariaAdapter(lista);
+        adapter.SetOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ParseObject ve = (ParseObject)v.getTag();
+
+               ParseObject ve = (ParseObject)v.getTag();
+                Log.e("Click", ve.getString("nombre"));
                 Intent i = new Intent(Inicio.this, DetellaVeterinaria.class);
-                String nombre=ve.getString("nombre");
-                i.putExtra("nombre",nombre);
+                String idvet=ve.getObjectId();
+                i.putExtra("idvet",idvet);
+                i.putExtra("idUsuario",idUsuario);
                 startActivity(i);
-            }
+           }
         });
 
 //        VeterinariaAdapter vad=new VeterinariaAdapter(lista);

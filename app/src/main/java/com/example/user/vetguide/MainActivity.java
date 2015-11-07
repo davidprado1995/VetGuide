@@ -113,9 +113,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                ParseUser usuarioentrante = new ParseUser();
+                final ParseUser usuarioentrante = new ParseUser();
                 usuarioentrante.setPassword(passwordI.getText().toString());
                 usuarioentrante.setEmail(usernameI.getText().toString());
+
+
                 usuarioentrante.logInInBackground(u, p, new LogInCallback() {
                     @Override
                     public void done(ParseUser user, ParseException e) {
@@ -124,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
                             t.show();*/
 
                             Intent i = new Intent(getBaseContext(),Inicio.class);
+                            i.putExtra("idUsuario", user.getObjectId());
                             startActivity(i);
                         } else {
                             Toast t = Toast.makeText(getBaseContext(),"Login Incorrecto",Toast.LENGTH_SHORT);
