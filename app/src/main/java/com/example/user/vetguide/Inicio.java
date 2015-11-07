@@ -65,8 +65,8 @@ public class Inicio extends AppCompatActivity {
             public void onClick(View v) {
                 ParseObject ve = (ParseObject)v.getTag();
                 Intent i = new Intent(Inicio.this, DetellaVeterinaria.class);
-                String nombre=ve.getString("nombre");
-                i.putExtra("nombre",nombre);
+                String idvet=ve.getObjectId();
+                i.putExtra("idvet",idvet);
                 startActivity(i);
             }
         });
