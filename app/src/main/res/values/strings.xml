@@ -29,6 +29,7 @@
     <string name="title_activity_pedir_servicios">PedirServiciosActivity</string>
     <string name="title_activity_pedir_servicio">PedirServicioActivity</string>
     <string name="title_activity_confirmar_servicio">ConfirmarServicioActivity</string>
+    <string name="title_activity_pedir_servicio2">PedirServicio2Activity</string>
 
 
 

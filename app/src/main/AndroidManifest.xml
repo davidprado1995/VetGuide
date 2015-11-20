@@ -114,7 +114,6 @@
             android:label="@string/title_activity_pedir_servicios"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
-
         <activity
             android:name=".ConfirmarServicioActivity"
             android:label="@string/title_activity_confirmar_servicio"
