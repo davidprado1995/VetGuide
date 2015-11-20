@@ -26,6 +26,9 @@
 
 
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_pedir_servicios">PedirServiciosActivity</string>
+    <string name="title_activity_pedir_servicio">PedirServicioActivity</string>
+    <string name="title_activity_confirmar_servicio">ConfirmarServicioActivity</string>
 
 
 

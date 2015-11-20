@@ -108,8 +108,10 @@ public class DetellaVeterinaria extends AppCompatActivity {
         pedirservicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent i = new Intent(DetellaVeterinaria.this, PedirServicioActivity.class);
                 Toast t = Toast.makeText(DetellaVeterinaria.this,"Funcionalidad pronto",Toast.LENGTH_SHORT);
                 t.show();
+                startActivity(i);
             }
         });
 
