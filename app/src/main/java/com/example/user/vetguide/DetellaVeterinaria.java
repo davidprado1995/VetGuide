@@ -110,6 +110,7 @@ public class DetellaVeterinaria extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(DetellaVeterinaria.this, PedirServicioActivity.class);
                 i.putExtra("idVet",codigovetdetalle);
+                i.putExtra("nombreVetCita",nombrevet);
                 startActivity(i);
             }
         });

@@ -6,25 +6,31 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class PedirServicioActivity extends AppCompatActivity {
     LinearLayout ll;
-    String codigovetdetalle;
-    List<String> servicios = new ArrayList<>();
+    String codigovetdetalle,nombrevet;
+    JSONArray servicios = new JSONArray();
     Button butSiguiente, butCancelar;
+    List<RadioButton> rb=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,9 +40,10 @@ public class PedirServicioActivity extends AppCompatActivity {
 
         Intent i0 = getIntent();
         codigovetdetalle = i0.getStringExtra("idVet");
+        nombrevet = i0.getStringExtra("nombreVetCita");
 
         ll = (LinearLayout)findViewById(R.id.linearLayoutServ);
-        createRadioButton(codigovetdetalle);
+        final RadioGroup rg = createRadioButton();
 
         butSiguiente = (Button)findViewById(R.id.buttonSiguiente8);
         butCancelar = (Button)findViewById(R.id.buttonCancelar8);
@@ -45,6 +52,8 @@ public class PedirServicioActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(PedirServicioActivity.this, ConfirmarServicioActivity.class);
+                i.putExtra("servicio",rb.get(rg.getCheckedRadioButtonId()).getText());
+                i.putExtra("nombreVetCita",nombrevet);
                 startActivity(i);
             }
         });
@@ -59,10 +68,11 @@ public class PedirServicioActivity extends AppCompatActivity {
 
     }
 
-    public void createRadioButton(String codigovet) {
-        final RadioButton[] rb = new RadioButton[5];
-        RadioGroup rg = new RadioGroup(this); //create the RadioGroup
+    public RadioGroup createRadioButton() {
+        final RadioGroup rg = new RadioGroup(PedirServicioActivity.this);
+         //create the RadioGroup
         rg.setOrientation(RadioGroup.VERTICAL);//or RadioGroup.VERTICAL
+        rg.setGravity(Gravity.CENTER_HORIZONTAL);
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Veterinaria");
         query.whereEqualTo("objectId", codigovetdetalle);
         query.findInBackground(new FindCallback<ParseObject>() {
@@ -70,21 +80,28 @@ public class PedirServicioActivity extends AppCompatActivity {
             public void done(List<ParseObject> objects, ParseException e) {
                 if (e == null) {
                     for (ParseObject o : objects) {
-                        servicios = o.getList("servicios");
+                        servicios = o.getJSONArray("ServiciosBrindados");
+                        for (int i = 0; i < servicios.length(); i++) {
+                            RadioButton rad = new RadioButton(PedirServicioActivity.this);
+                            try {
+
+                                rad.setText(servicios.getString(i));
+
+                            } catch (JSONException je) {
+                                System.out.println(je);
+                            }
+
+                            rad.setId(i);
+                            rb.add(rad);
+                            rg.addView(rad);
+                        }
                     }
                 }
             }
         });
 
-        for(int i=0; i<servicios.size(); i++){
-            rb[i]  = new RadioButton(this);
-
-            rb[i].setText(servicios.get(i));
-            rb[i].setId(i + 100);
-            rg.addView(rb[i]);
-        }
         ll.addView(rg);//you add the whole RadioGroup to the layout
-
+        return rg;
     }
 
 
