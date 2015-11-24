@@ -76,7 +76,8 @@ public class MainActivity extends AppCompatActivity {
                                 Log.d("MyApp", "User logged in through Facebook!");
 
                                 //me redirige aqui---------------------------->
-                                Intent intent = new Intent(MainActivity.this, RegistroMascotaActivity.class);
+                                Intent intent = new Intent(MainActivity.this, Inicio.class);
+                                intent.putExtra("idUsuario", user.getObjectId());
                                 startActivity(intent);
                                 Toast t = Toast.makeText(MainActivity.this, "Login de Fb correcto", Toast.LENGTH_LONG);
                                 t.show();
@@ -125,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
                             /*Toast t = Toast.makeText(getBaseContext(),"Login Correcto",Toast.LENGTH_SHORT);
                             t.show();*/
 
-                            Intent i = new Intent(getBaseContext(),Inicio.class);
+                            Intent i = new Intent(MainActivity.this,Inicio.class);
                             i.putExtra("idUsuario", user.getObjectId());
                             startActivity(i);
                         } else {

@@ -8,9 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.vision.barcode.Barcode;
 import com.parse.FindCallback;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -26,6 +28,9 @@ public class DetellaVeterinaria extends AppCompatActivity {
     Button pedircita, pedirservicio;
     String nombrevet;
     String idUsuario;
+    double latitud;
+    double longitud;
+    ImageView mostrarMapa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +49,7 @@ public class DetellaVeterinaria extends AppCompatActivity {
         horasatenciondocdetalle = (TextView)findViewById(R.id.tviHorasAtencionDoc);
         diasatenciondocdetalle =(TextView)findViewById(R.id.tviDiasAtencionDoc);
 
+
         Intent i0 = getIntent();
         codigovetdetalle = i0.getStringExtra("idvet");
         idUsuario = i0.getStringExtra("idUsuario");
@@ -60,19 +66,21 @@ public class DetellaVeterinaria extends AppCompatActivity {
                         String distritovet = o.getString("distrito");
                         Number telefonovet = o.getNumber("telefono");
                         String horasvet = o.getString("horas_atencion");
+                        // jalar los datos de veterinaria
+                         latitud = o.getDouble("latitud");
+                         longitud = o.getDouble("longitud");
                         nombrevetdetalle.setText(nombrevet);
                         direccionvetdetalle.setText(direccionvet);
                         telefonovetdetalle.setText(telefonovet.toString());
                         horariovetdetalle.setText(horasvet);
+
                     }
                 }
             }
         });
 
-
-
         ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Doctor");
-        query2.whereEqualTo("contratoVeterinaria",codigovetdetalle);
+        query2.whereEqualTo("contratoVeterinaria", codigovetdetalle);
         query2.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> objects, com.parse.ParseException e) {
@@ -96,10 +104,10 @@ public class DetellaVeterinaria extends AppCompatActivity {
         pedircita.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i= new Intent(DetellaVeterinaria.this , PedirCitaActivity.class);
-                i.putExtra("nombreVetCita",nombrevet);
-                i.putExtra("idVet",codigovetdetalle);
-                i.putExtra("idUsuario",idUsuario);
+                Intent i = new Intent(DetellaVeterinaria.this, PedirCitaActivity.class);
+                i.putExtra("nombreVetCita", nombrevet);
+                i.putExtra("idVet", codigovetdetalle);
+                i.putExtra("idUsuario", idUsuario);
                 startActivity(i);
             }
         });
@@ -110,6 +118,20 @@ public class DetellaVeterinaria extends AppCompatActivity {
             public void onClick(View v) {
                 Toast t = Toast.makeText(DetellaVeterinaria.this,"Funcionalidad pronto",Toast.LENGTH_SHORT);
                 t.show();
+            }
+        });
+        //mostrar mapa dandole click a la imagen imageviwe2 = icono de ubicacion
+        mostrarMapa = (ImageView) findViewById(R.id.imageView2);
+        mostrarMapa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(DetellaVeterinaria.this, MapsActivity.class);
+
+                i.putExtra("latitud", latitud);
+                i.putExtra("longitud",longitud);
+                i.putExtra("nombre",nombrevet);
+
+                startActivity(i);
             }
         });
 
