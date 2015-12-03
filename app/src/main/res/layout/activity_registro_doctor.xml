@@ -94,20 +94,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="De "/>
-        <EditText
-            android:layout_width="100dp"
+        <Spinner
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/eteDiaInicio"
-            android:background="#FFFFFF"/>
+            android:layout_weight="5"
+            android:entries="@array/diass"
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" a "/>
-        <EditText
-            android:layout_width="100dp"
+        <Spinner
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/eteDiaFin"
-            android:background="#FFFFFF"/>
+            android:layout_weight="5"
+            android:entries="@array/diass"
+            />
     </LinearLayout>
 
 
@@ -134,20 +138,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="De "/>
-        <EditText
-            android:layout_width="100dp"
+        <Spinner
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/eteHoraInicio"
-            android:background="#FFFFFF"/>
+            android:layout_weight="5"
+            android:entries="@array/horas"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" a "/>
-        <EditText
-            android:layout_width="100dp"
+        <Spinner
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/eteHoraFin"
-            android:background="#FFFFFF"/>
+            android:layout_weight="5"
+            android:entries="@array/horas"/>
     </LinearLayout>
 
     <LinearLayout

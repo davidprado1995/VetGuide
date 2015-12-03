@@ -79,11 +79,12 @@
             android:layout_height="wrap_content"
             android:text="Día: "
             android:textSize="20dp"/>
-        <EditText
+        <Spinner
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/eteDiaCita"
-            android:background="#FFFFFF"
+            android:layout_weight="5"
+            android:entries="@array/diass"
             />
     </LinearLayout>
 
@@ -99,11 +100,12 @@
             android:layout_height="wrap_content"
             android:text="Hora: "
             android:textSize="20dp"/>
-        <EditText
+        <Spinner
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/eteHoraCita"
-            android:background="#FFFFFF"
+            android:layout_weight="5"
+            android:entries="@array/horas"
             />
     </LinearLayout>
 

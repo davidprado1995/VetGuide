@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.parse.ParseException;
@@ -20,7 +21,8 @@ import com.parse.SaveCallback;
 public class RegistrarVeterinariaFragment extends Fragment {
 
     Button butSiguiente, butCancelar, butMapa;
-    EditText nombrevete, direccionvete, distritovete, telefonovete, diasinicio, diasfin, horasinicio, horasfin;
+    EditText nombrevete, direccionvete, distritovete, telefonovete;
+    Spinner diasinicio, diasfin, horasinicio, horasfin;
     ParseObject veterinaria;
     double latitud, longitud;
 
@@ -40,10 +42,10 @@ public class RegistrarVeterinariaFragment extends Fragment {
         direccionvete = (EditText) view.findViewById(R.id.eteDireccionVet);
         distritovete = (EditText) view.findViewById(R.id.eteDistritoVet);
         telefonovete = (EditText) view.findViewById(R.id.eteTelefonoVet);
-        diasinicio = (EditText) view.findViewById(R.id.eteDiaInicioVet);
-        diasfin = (EditText) view.findViewById(R.id.eteDiaFinVet);
-        horasinicio = (EditText) view.findViewById(R.id.eteHoraInicioVet);
-        horasfin = (EditText) view.findViewById(R.id.eteHoraFinVet);
+        diasinicio = (Spinner) view.findViewById(R.id.spDiaInicio);
+        diasfin = (Spinner) view.findViewById(R.id.eteDiaFinVet);
+        horasinicio = (Spinner) view.findViewById(R.id.eteHoraInicioVet);
+        horasfin = (Spinner) view.findViewById(R.id.eteHoraFinVet);
 
         butSiguiente.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,8 +57,8 @@ public class RegistrarVeterinariaFragment extends Fragment {
                 veterinaria.put("direccion", direccionvete.getText().toString());
                 veterinaria.put("distrito", distritovete.getText().toString());
                 veterinaria.put("telefono", Integer.parseInt(telefonovete.getText().toString()));
-                veterinaria.put("dias_atencion", diasinicio.getText().toString() + "-" + diasfin.getText().toString());
-                veterinaria.put("horas_atencion", horasinicio.getText().toString() + "-" + horasfin.getText().toString());
+                veterinaria.put("dias_atencion", diasinicio.getItemAtPosition(diasinicio.getSelectedItemPosition()).toString() + "-" + diasfin.getItemAtPosition(diasfin.getSelectedItemPosition()).toString());
+                veterinaria.put("horas_atencion", horasinicio.getItemAtPosition(horasinicio.getSelectedItemPosition()).toString() + "-" + horasfin.getItemAtPosition(horasfin.getSelectedItemPosition()).toString());
                 veterinaria.put("latitud",latitud);
                 veterinaria.put("longitud",longitud);
                 veterinaria.saveInBackground(new SaveCallback() {

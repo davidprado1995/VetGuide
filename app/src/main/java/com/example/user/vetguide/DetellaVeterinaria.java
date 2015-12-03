@@ -66,13 +66,14 @@ public class DetellaVeterinaria extends AppCompatActivity {
                         String distritovet = o.getString("distrito");
                         Number telefonovet = o.getNumber("telefono");
                         String horasvet = o.getString("horas_atencion");
+                        String diasvet = o.getString("dias_atencion");
                         // jalar los datos de veterinaria
                          latitud = o.getDouble("latitud");
                          longitud = o.getDouble("longitud");
                         nombrevetdetalle.setText(nombrevet);
                         direccionvetdetalle.setText(direccionvet);
                         telefonovetdetalle.setText(telefonovet.toString());
-                        horariovetdetalle.setText(horasvet);
+                        horariovetdetalle.setText(diasvet + "/" + horasvet);
 
                     }
                 }

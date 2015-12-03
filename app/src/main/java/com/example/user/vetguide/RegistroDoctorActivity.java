@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.parse.GetCallback;
@@ -20,7 +21,8 @@ import com.parse.SaveCallback;
 public class RegistroDoctorActivity extends AppCompatActivity {
 
     Button butSiguiente, butCancelar;
-    EditText nombredoctor, especialidad, diainicio, diafin, horainicio, horafin;
+    EditText nombredoctor, especialidad;
+    Spinner diainicio, diafin, horainicio, horafin;
     String codVet;
 
     @Override
@@ -35,10 +37,10 @@ public class RegistroDoctorActivity extends AppCompatActivity {
 
         nombredoctor = (EditText) findViewById(R.id.eteNombreDoctor);
         especialidad = (EditText) findViewById(R.id.eteEspecialidadDoctor);
-        diainicio = (EditText) findViewById(R.id.eteDiaInicio);
-        diafin = (EditText) findViewById(R.id.eteDiaFin);
-        horainicio = (EditText) findViewById(R.id.eteHoraInicio);
-        horafin = (EditText) findViewById(R.id.eteHoraFin);
+        diainicio = (Spinner) findViewById(R.id.eteDiaInicio);
+        diafin = (Spinner) findViewById(R.id.eteDiaFin);
+        horainicio = (Spinner) findViewById(R.id.eteHoraInicio);
+        horafin = (Spinner) findViewById(R.id.eteHoraFin);
 
         butSiguiente.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,8 +54,8 @@ public class RegistroDoctorActivity extends AppCompatActivity {
                 ParseObject doctor = new ParseObject("Doctor");
                 doctor.put("nombre", nombredoctor.getText().toString());
                 doctor.put("especialidad", especialidad.getText().toString());
-                doctor.put("horario_atencion", diainicio.getText().toString() + "-" + diafin.getText().toString());
-                doctor.put("tiempo_atencion", horainicio.getText().toString() + "-" + horafin.getText().toString());
+                doctor.put("horario_atencion", diainicio.getSelectedItem().toString() + "-" + diafin.getItemAtPosition(diafin.getSelectedItemPosition()).toString());
+                doctor.put("tiempo_atencion", horainicio.getItemAtPosition(horainicio.getSelectedItemPosition()).toString() + "-" + horafin.getItemAtPosition(horafin.getSelectedItemPosition()).toString());
                 doctor.put("contratoVeterinaria", codVet);
                 doctor.saveInBackground(new SaveCallback() {
                     @Override

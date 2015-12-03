@@ -32,7 +32,7 @@ public class ConfirmarServicioActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Toast t = Toast.makeText(ConfirmarServicioActivity.this, "Reserva de servicio realizada.", Toast.LENGTH_SHORT);
                 t.show();
-                Intent i = new Intent(ConfirmarServicioActivity.this, DetellaVeterinaria.class);
+                Intent i = new Intent(ConfirmarServicioActivity.this, Inicio.class);
                 startActivity(i);
             }
         });
@@ -43,7 +43,7 @@ public class ConfirmarServicioActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Toast t = Toast.makeText(ConfirmarServicioActivity.this, "Reserva de servicio cancelada", Toast.LENGTH_SHORT);
                 t.show();
-                Intent i = new Intent(ConfirmarServicioActivity.this, PedirServicioActivity.class);
+                Intent i = new Intent(ConfirmarServicioActivity.this, Inicio.class);
                 startActivity(i);
             }
         });

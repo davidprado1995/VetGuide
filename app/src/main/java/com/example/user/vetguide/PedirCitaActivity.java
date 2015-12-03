@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,7 +21,7 @@ import com.parse.SaveCallback;
 public class PedirCitaActivity extends AppCompatActivity {
     TextView tviNombreVet;
     Button butReservar, butCancelar;
-    EditText eteDiaCita,eteHoraCita;
+    Spinner eteDiaCita,eteHoraCita;
     String idvet;
     String idUsuario;
     @Override
@@ -40,13 +41,13 @@ public class PedirCitaActivity extends AppCompatActivity {
         tviNombreVet.setText(nomb);
 
         butReservar=(Button)findViewById(R.id.buttonReservar);
-        eteDiaCita=(EditText)findViewById(R.id.eteDiaCita);
-        eteHoraCita=(EditText)findViewById(R.id.eteHoraCita);
+        eteDiaCita=(Spinner)findViewById(R.id.eteDiaCita);
+        eteHoraCita=(Spinner)findViewById(R.id.eteHoraCita);
         butReservar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String diaCita=eteDiaCita.getText().toString();
-                String horaCita=eteHoraCita.getText().toString();
+                String diaCita=eteDiaCita.getSelectedItem().toString();
+                String horaCita=eteHoraCita.getSelectedItem().toString();
                 ParseObject cita = new ParseObject("Cita");
                 cita.put("horaCita",horaCita);
                 cita.put("diaCita",diaCita);
@@ -72,7 +73,7 @@ public class PedirCitaActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Toast t = Toast.makeText(PedirCitaActivity.this, "Reserva cancelada", Toast.LENGTH_SHORT);
                 t.show();
-                Intent i3 = new Intent(PedirCitaActivity.this, DetellaVeterinaria.class);
+                Intent i3 = new Intent(PedirCitaActivity.this, Inicio.class);
                 startActivity(i3);
             }
         });
