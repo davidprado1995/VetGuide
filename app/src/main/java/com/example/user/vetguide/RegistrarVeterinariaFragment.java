@@ -94,8 +94,9 @@ public class RegistrarVeterinariaFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent i0 = new Intent(getActivity(), MapsActivity.class);
-
+                i0.putExtra("dir",direccionvete.getText().toString());
                 startActivityForResult(i0,UBICACION);
+
 
             }
         });
@@ -107,6 +108,7 @@ public class RegistrarVeterinariaFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
         if(requestCode == UBICACION){
             if(resultCode == Activity.RESULT_OK){
                 latitud = data.getDoubleExtra("latitud",0);

@@ -63,96 +63,64 @@
                         android:id="@+id/imageView2"
                         android:src="@drawable/iconoubicacion" />
 
-                    <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Av. 28 de Julio cuadra 2"
-                        android:layout_marginLeft="5dp"
-                    android:id="@+id/tviDireccionVet"
-                        android:textSize="20dp" />
 
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    >
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/imageView3"
-                        android:src="@drawable/cel" />
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="(01) 123 4567"
-                        android:layout_marginLeft="5dp"
-                        android:id="@+id/tviTelefonoVet"
-                        android:textSize="20dp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    >
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/imageView4"
-                        android:src="@drawable/tiempo" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="24 horas"
-                        android:layout_marginLeft="5dp"
-                        android:id="@+id/tviHorarioAttVet"
-                        android:textSize="20dp" />
-
-                </LinearLayout>
+                <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Av. 28 de Julio cuadra 2"
+                    android:layout_marginLeft="5dp"
+                android:id="@+id/tviDireccionVet"
+                    android:textSize="20dp" />
 
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:orientation="horizontal"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:gravity="center"
                 >
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Servicios"
-                    android:background="@drawable/mybutton"
-                    android:id="@+id/buttonServicios" />
 
-                <Button
+                <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pedir Cita"
-                    android:id="@+id/buttonPedirCita"
-                    android:background="@drawable/mybutton"
-                    android:layout_marginLeft="50dp"/>
+                    android:id="@+id/imageView3"
+                    android:src="@drawable/cel" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="(01) 123 4567"
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/tviTelefonoVet"
+                    android:textSize="20dp" />
             </LinearLayout>
-            <TextView
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Veterinarios"
-                android:textColor="#FF9500"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:textSize="20dp"/>
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                >
 
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView4"
+                    android:src="@drawable/tiempo" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="24 horas"
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/tviHorarioAttVet"
+                    android:textSize="20dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -160,52 +128,86 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:gravity="center_vertical"
+            android:gravity="center"
             >
-            <LinearLayout
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Servicios"
+                android:background="@drawable/mybutton"
+                android:id="@+id/buttonServicios" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pedir Cita"
+                android:id="@+id/buttonPedirCita"
+                android:background="@drawable/mybutton"
+                android:layout_marginLeft="50dp"/>
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Veterinarios"
+            android:textColor="#FF9500"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="20dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center_vertical"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            >
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center_horizontal"
-                android:layout_weight="1"
-                >
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Raul Lavarte"
-                    android:id="@+id/tviNombreDoc"
-                    android:textSize="20dp" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Felinos"
-                    android:id="@+id/tviEspecialidadDoc"
-                    android:textSize="20dp" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Lun - Dom"
-                    android:id="@+id/tviDiasAtencionDoc"
-                    android:textSize="20dp" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="8:00 am - 12:00 pm"
-                    android:id="@+id/tviHorasAtencionDoc"
-                    android:textSize="20dp" />
-            </LinearLayout>
-            <RadioButton
+                android:text="Raul Lavarte"
+                android:id="@+id/tviNombreDoc"
+                android:textSize="20dp" />
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:id="@+id/radioButton"
-                android:layout_weight="10"
-                />
+                android:text="Felinos"
+                android:id="@+id/tviEspecialidadDoc"
+                android:textSize="20dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lun - Dom"
+                android:id="@+id/tviDiasAtencionDoc"
+                android:textSize="20dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="8:00 am - 12:00 pm"
+                android:id="@+id/tviHorasAtencionDoc"
+                android:textSize="20dp" />
         </LinearLayout>
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:id="@+id/radioButton"
+            android:layout_weight="10"
+            />
+    </LinearLayout>
 
 
 
-        </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
+</ScrollView>
 
 </LinearLayout>
