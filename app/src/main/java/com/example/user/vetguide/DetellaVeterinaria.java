@@ -26,7 +26,7 @@ public class DetellaVeterinaria extends AppCompatActivity {
             diasatenciondocdetalle,horasatenciondocdetalle;
     String codigovetdetalle;
     Button pedircita, pedirservicio;
-    String nombrevet;
+    String nombrevet,horasvet,diasvet;
     String idUsuario;
     double latitud;
     double longitud;
@@ -65,13 +65,13 @@ public class DetellaVeterinaria extends AppCompatActivity {
                         String direccionvet = o.getString("direccion");
                         String distritovet = o.getString("distrito");
                         Number telefonovet = o.getNumber("telefono");
-                        String horasvet = o.getString("horas_atencion");
-                        String diasvet = o.getString("dias_atencion");
+                        horasvet = o.getString("horas_atencion");
+                        diasvet = o.getString("dias_atencion");
                         // jalar los datos de veterinaria
                          latitud = o.getDouble("latitud");
                          longitud = o.getDouble("longitud");
                         nombrevetdetalle.setText(nombrevet);
-                        direccionvetdetalle.setText(direccionvet);
+                        direccionvetdetalle.setText(direccionvet + "-" + distritovet);
                         telefonovetdetalle.setText(telefonovet.toString());
                         horariovetdetalle.setText(diasvet + "/" + horasvet);
 
@@ -109,6 +109,8 @@ public class DetellaVeterinaria extends AppCompatActivity {
                 i.putExtra("nombreVetCita", nombrevet);
                 i.putExtra("idVet", codigovetdetalle);
                 i.putExtra("idUsuario", idUsuario);
+                i.putExtra("diasVet", diasvet);
+                i.putExtra("horasVet",horasvet);
                 startActivity(i);
             }
         });
@@ -120,6 +122,8 @@ public class DetellaVeterinaria extends AppCompatActivity {
                 Intent i = new Intent(DetellaVeterinaria.this, PedirServicioActivity.class);
                 i.putExtra("idVet",codigovetdetalle);
                 i.putExtra("nombreVetCita",nombrevet);
+                i.putExtra("diasVet", diasvet);
+                i.putExtra("horasVet",horasvet);
                 startActivity(i);
             }
         });

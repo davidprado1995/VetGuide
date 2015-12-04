@@ -84,7 +84,6 @@
             android:layout_height="match_parent"
             android:id="@+id/eteDiaCita"
             android:layout_weight="5"
-            android:entries="@array/diass"
             />
     </LinearLayout>
 
@@ -105,7 +104,6 @@
             android:layout_height="match_parent"
             android:id="@+id/eteHoraCita"
             android:layout_weight="5"
-            android:entries="@array/horas"
             />
     </LinearLayout>
 

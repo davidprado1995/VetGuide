@@ -109,7 +109,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id="@+id/eteDiaServicio"
-                    android:entries="@array/diass"
                     />
             </LinearLayout>
 
@@ -129,7 +128,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id="@+id/eteHoraServicio"
-                    android:entries="@array/horas"
                     />
             </LinearLayout>
 

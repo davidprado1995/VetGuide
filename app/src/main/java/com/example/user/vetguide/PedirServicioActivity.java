@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -31,6 +32,7 @@ public class PedirServicioActivity extends AppCompatActivity {
     JSONArray servicios = new JSONArray();
     Button butSiguiente, butCancelar;
     List<RadioButton> rb=new ArrayList<>();
+    String hora,dia;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +43,8 @@ public class PedirServicioActivity extends AppCompatActivity {
         Intent i0 = getIntent();
         codigovetdetalle = i0.getStringExtra("idVet");
         nombrevet = i0.getStringExtra("nombreVetCita");
+        hora=i0.getStringExtra("horasVet");
+        dia=i0.getStringExtra("diasVet");
 
         ll = (LinearLayout)findViewById(R.id.linearLayoutServ);
         final RadioGroup rg = createRadioButton();
@@ -54,6 +58,8 @@ public class PedirServicioActivity extends AppCompatActivity {
                 Intent i = new Intent(PedirServicioActivity.this, ConfirmarServicioActivity.class);
                 i.putExtra("servicio",rb.get(rg.getCheckedRadioButtonId()).getText());
                 i.putExtra("nombreVetCita",nombrevet);
+                i.putExtra("horasVet",hora);
+                i.putExtra("diasVet",dia);
                 startActivity(i);
             }
         });
