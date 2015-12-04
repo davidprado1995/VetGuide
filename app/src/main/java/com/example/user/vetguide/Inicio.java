@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
@@ -15,6 +16,7 @@ import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,13 +28,13 @@ public class Inicio extends AppCompatActivity {
     VeterinariaAdapter adapter;
     List<ParseObject> lista = new ArrayList<>();//lo cambie por un ParseObject
     String idUsuario;
+    Button btnLogout;
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+
         RecyclerView rvi=(RecyclerView)findViewById(R.id.my_recycler_view);
         rvi.setLayoutManager(new LinearLayoutManager(this));
 
@@ -86,6 +88,17 @@ public class Inicio extends AppCompatActivity {
 //            }
 //        });
 //        rvi.setAdapter(vad);
+
+        btnLogout=(Button)findViewById(R.id.buttonLogOut);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ParseUser currentuser = ParseUser.getCurrentUser();
+                currentuser.logOut();
+                Intent i = new Intent(Inicio.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
 
 
 
